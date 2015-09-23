@@ -1,0 +1,23 @@
+doctype html
+html
+  head
+    link(href='https://fonts.googleapis.com/css?family=Lobster|Cabin' rel='stylesheet' type='text/css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js")
+    script(src="/javascripts/script.js")
+    div(class="main")
+      div(class="leftnav")
+        nav(class="menu")
+          input(type="checkbox" id="togglemenu")
+          label(for="togglemenu" class="togglemenu")
+          ul
+            li
+              a(href="#") Home
+            li
+              a(href="#") About 
+      div(class="rightmain")
+        h1 Tally
+          img(src="images/tally_logo.png" width="60px" )
+          
+    block content
