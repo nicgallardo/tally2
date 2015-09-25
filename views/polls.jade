@@ -1,12 +1,19 @@
 extends layout
 block content
-  //- form(name="")
-  //- select(id="", name="")
-  //-   each val in [ '2012 Iowa GOP Primary','2012 New Hampshire GOP Primary' 
-  //-     option= val.name
-    //- option(value="2016 Ohio Republican Presidential Primary") 2016 Ohio Republican Presidential Primary
-  input(type="button")
-  script(src="/javascripts/polls.js")
+  form(id="titleSelectForm" action="/" method="get")
+    label(for="titleSelect") Select Information To Graph
+    select(name="titleSelect" id="titles")
+    input(type="submit")
+    
+      
+  //-     option= allTitles
+  //-     //use jquery to loop through the array 
+  //-     //append to here 
+  //-   input(type="submit" value="Tally Graph!")
+  //-  
+  p(class="test")
+  script(src="/javascripts/pollData.js")
+  script(src="https://code.jquery.com/jquery-1.10.2.js")
   script(src="http://code.highcharts.com/highcharts.js")
   script(src="http://code.highcharts.com/modules/exporting.js")
   div(id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto")
