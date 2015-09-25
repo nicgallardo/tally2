@@ -3,8 +3,8 @@ var router = express.Router();
 var sortedData = require('../q2Contributions')
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Tally' });
+router.get('/', function(req, res, next){
+  res.render('index', {title: "express"})
 });
 
 router.get('/presi', function(req, res, next) {
@@ -24,6 +24,10 @@ router.get('/q2Contributions', function(req, res, next) {
 router.get('/polldata', function(req, res, next){
   console.log(output)
   res.send(output)
+})
+
+router.get('/getStrings', function(req, res, next){
+  res.send(searchString)
 })
 
 module.exports = router;
