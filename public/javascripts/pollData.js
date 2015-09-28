@@ -22,7 +22,7 @@ window.pollsterPoll = function(incoming_data){
 
 $(document).ready(function(){
     $.ajax({
-        url: "http://elections.huffingtonpost.com/pollster/api/charts" + callback,
+        url: "https://elections.huffingtonpost.com/pollster/api/charts" + callback,
         dataType: 'script',
         type: 'GET',
         cache: true,
