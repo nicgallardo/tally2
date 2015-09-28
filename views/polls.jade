@@ -2,14 +2,16 @@ extends layout
 block content
   div(class="center")
     form(id="titleSelectForm" action="/polls/new" method="get")
-      label(for="titleSelect" class="titleSelector") Select Information To Graph
+      label(for="titleSelect" class="titleSelector")
       p 
         select(name="titleSelect" id="titles" class="titleSelector")
-        div(class="titleSelector" id="submitString") Tally Graph It
-        //- input(type="submit" )
-    //- script(src="/javascripts/getStrings.js")
-    script(src="/javascripts/pollData.js")
-    script(src="https://code.jquery.com/jquery-1.10.2.js")
-    script(src="http://code.highcharts.com/highcharts.js")
-    script(src="http://code.highcharts.com/modules/exporting.js")
-    div(id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto")
+        div(class="titleSelector" id="submitString") 
+          span(id="tally") Tally It!
+
+  script(src="/javascripts/pollData.js")
+  //- script(src="/bower_components/chosen/chosen.jquery.min.js")
+  //- script(src="/bower_components/jquery/dist/jquery.min.js")
+  //- script(src="javascripts/dropdown.js")
+  script(src="http://code.highcharts.com/highcharts.js")
+  script(src="http://code.highcharts.com/modules/exporting.js")
+  div(id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto")

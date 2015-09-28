@@ -9,13 +9,13 @@ var latest_data = [];
 var currentPolls = [];
 var searchString = "";
 
-
 // var titleSearch = //"2016 Ohio Republican Presidential Primary" whatever the input of the selection made on polls page;
 
 
 var callback = '?callback=pollsterPoll';
 
 window.pollsterPoll = function(incoming_data){
+    console.log(incoming_data);
     latest_data = incoming_data;
     allTitle(latest_data);
 };
@@ -56,6 +56,7 @@ $(window).load(function () {
 });
 
 function createGraphData(data, searchString){
+  var objData = {};
   for(var i = 0; i <data.length; i++){
     if(data[i].title.indexOf(searchString) > -1){
       currentPolls.push(data[i].estimates);
@@ -67,5 +68,46 @@ function createGraphData(data, searchString){
     finalOutput["name"] = currentPolls[0][i].choice;
     finalOutput["y"] = currentPolls[0][i].value;
     output.push(finalOutput);
+
+    var length = (output.length/2);
+    console.log(length)
+    fireChart(output.slice(-length))
   }
+
+};
+function fireChart(graphData){
+  $(function () {
+      $('#container').highcharts({
+          chart: {
+              plotBackgroundColor: null,
+              plotBorderWidth: null,
+              plotShadow: false,
+              type: 'pie'
+          },
+          title: {
+              text: searchString
+          },
+          tooltip: {
+              pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+          },
+          plotOptions: {
+              pie: {
+                  allowPointSelect: true,
+                  cursor: 'pointer',
+                  dataLabels: {
+                      enabled: true,
+                      format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                      style: {
+                          color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                      }
+                  }
+              }
+          },
+          series: [{
+              name: "Brands",
+              colorByPoint: true,
+              data: graphData,
+          }]
+      });
+  });
 };

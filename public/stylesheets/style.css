@@ -32,10 +32,37 @@ h1 {
 }
 
 .center {
-  width: 70%;
+  width: 60%;
   margin: 0 auto;
   background-color: #DCDCDC;
   border-radius: 10px;
+  text-align: center;
+  padding: 15px;
+  margin-top: 20px;
+  box-shadow: 10px 10px 5px #888888;
+  margin-bottom: 30px;
+}
+#titles{
+   width: 400px;
+   height: 34px;
+   overflow: hidden;
+   font-size: 15px;
+   background: url(new_arrow.png) no-repeat right white;
+   border: 0px solid #ccc;
+   font-family: 'Cabin', sans-serif;
+   }
+#submitString {
+  border-radius: 15px;
+  background-color: #FFA500;
+  color: white;
+  height: 50px;
+  width: 150px;
+  box-shadow: 10px 10px 5px #888888;
+  padding: 20px;
+}
+#tally{
+  font-family: 'Lobster', cursive;
+  font-size: 40px;
 }
 
 .titleSelector {
@@ -50,8 +77,7 @@ h1 {
 }
 
 .rightmain {
-  margin-left: auto;
-  margin-right: auto;
+ margin-left: -100px;
 }
 
 .box {

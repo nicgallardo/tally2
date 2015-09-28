@@ -19942,7 +19942,7 @@ var currentPolls = [],
     titlePush = [],
     combineArray = "  ",
     testCase = "2016",
-    //this
+    length,
     searchString = "2016 Ohio Republican Presidential Primary";
 //pulls all title that contains 2016 -works
 var creatSubArrays = [];
@@ -19960,7 +19960,9 @@ function createGraphData(data){
     finalOutput["name"] = currentPolls[0][i].choice;
     finalOutput["y"] = currentPolls[0][i].value;
     output.push(finalOutput);
+    length = (output.length/2)
   }
+  console.log(length)
 }
 createGraphData(pollData)
-console.log(output)
+// console.log(output)
