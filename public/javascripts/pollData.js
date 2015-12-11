@@ -8,9 +8,8 @@ var output = [];
 var latest_data = [];
 var currentPolls = [];
 var searchString = "";
-
-// var titleSearch = //"2016 Ohio Republican Presidential Primary" whatever the input of the selection made on polls page;
-
+var finalOutput;
+var objData;
 
 var callback = '?callback=pollsterPoll';
 
@@ -37,7 +36,7 @@ function pollsterChart() {
 function pollsterPoll() {
   debugger
 }
-//this pulls out all the titles for the jade loop iteration
+
 function allTitle (data){
   for(var i = 0; i < data.length; i++){
     allTitles.push(data[i].title);
@@ -45,18 +44,27 @@ function allTitle (data){
 };
 
 $(window).load(function () {
+  var string;
   for(var i = 0; i <allTitles.length; i++){
     $("#titles").append("<option>"+ allTitles[i] + "</option>");
   }
   $( "#submitString" ).click(function() {
-    var string = $("#titles").val();
-    searchString = string;
-    createGraphData(latest_data, searchString);
+    string = $("#titles").val();
+    window.location.href = "/headline/"+ string;
   });
+  if(window.location.pathname.length > 30){
+    var pathSearchString = window.location.pathname.split('/').pop().split("%20").join(' ')
+    createGraphData(latest_data, pathSearchString);
+  }
+
+
 });
 
+
+
+
 function createGraphData(data, searchString){
-  var objData = {};
+  objData = {};
   for(var i = 0; i <data.length; i++){
     if(data[i].title.indexOf(searchString) > -1){
       currentPolls.push(data[i].estimates);
@@ -64,17 +72,17 @@ function createGraphData(data, searchString){
     }
   }
   for(var i = 0; i < currentPolls[0].length; i++){
-    var finalOutput = {};
+    finalOutput = {};
     finalOutput["name"] = currentPolls[0][i].choice;
     finalOutput["y"] = currentPolls[0][i].value;
     output.push(finalOutput);
-
-    var length = (output.length/2);
-    console.log(length)
-    fireChart(output.slice(-length))
+    // console.log("output", output);
+    fireChart(output)
   }
-
+  currentPolls = [];
+  output = [];
 };
+
 function fireChart(graphData){
   $(function () {
       $('#container').highcharts({

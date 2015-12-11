@@ -1,33 +1,26 @@
 var express = require('express');
 var router = express.Router();
-var sortedData = require('../q2Contributions')
+var unirest = require('unirest');
+require('dotenv').load();
 
-/* GET home page. */
 router.get('/', function(req, res, next){
   res.render('index', {title: "express"})
 });
 
-router.get('/presi', function(req, res, next) {
-  res.render('presi', {title: 'Tally'})
-});
-
 router.get('/polls', function(req, res, next){
-  res.render('polls', {title: '2016 Presidential Polls'})
+  res.render('polls')
 });
 
+router.get("/headline/:string", function(req, res){
 
-router.get('/q2Contributions', function(req, res, next) {
-  console.log(sortedData)
-  res.send(sortedData)
-});
-
-router.get('/polldata', function(req, res, next){
-  console.log(output)
-  res.send(output)
-})
-
-router.get('/getStrings', function(req, res, next){
-  res.send(searchString)
+  var searchString = req.params.string.split(" ").join("+")
+  console.log(searchString);
+  unirest.get('http://api.nytimes.com/svc/search/v2/articlesearch.json?q=' + searchString + '&api-key=' + process.env.NYTIMES_API)
+  .end(function (response){
+    var headlines = response.body.response.docs
+    console.log(headlines);
+    res.render('polls', {headlines: headlines, searchString: req.params.string, })
+  })
 })
 
 module.exports = router;
