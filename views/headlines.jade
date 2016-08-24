@@ -1,0 +1,29 @@
+extends layout
+block content
+  div(class="row news-contain")
+  div(class="col-md-12")
+    h3(class="text-center font-green") HEADLINES
+    if headlines
+    div(class="row")
+      div(class="col-md-12")
+        each headline in headlines
+          div(class="col-md-5 articles text-center")
+            h5
+              span
+                  a(href=headline.url target="_blank")= headline.title
+            if headline.multimedia
+              div(class="row")
+              each media in headline.multimedia
+                if media.width == 190
+                  if media.caption
+                    div(class="col-md-5 col-md-offset-1 text-left")
+                      p= media.caption
+                    div(class="col-md-5")  
+                      img(src=media.url)
+                  else
+                    div(class="col-md-12")  
+                      img(src=media.url)
+            div(class="text-center")
+              a(href=headline.web_url target="_blank")= headline.source
+  div(class="row footer bg-white")
+    div(class="col-md-12")

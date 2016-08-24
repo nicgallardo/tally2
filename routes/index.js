@@ -4,7 +4,7 @@ var unirest = require('unirest');
 require('dotenv').load();
 
 router.get('/', function(req, res, next){
-  res.render('index', {title: "express"})
+  res.render('index')
 });
 
 router.get('/polls', function(req, res, next){
@@ -14,7 +14,6 @@ router.get('/polls', function(req, res, next){
 router.get("/headline/:string", function(req, res){
 
   var searchString = req.params.string.split(" ").join("+")
-  console.log(searchString);
   unirest.get('https://api.nytimes.com/svc/search/v2/articlesearch.json?q=' + searchString + '&api-key=' + process.env.NYTIMES_API_NEWS)
   .end(function (response){
     var obj;
@@ -25,6 +24,18 @@ router.get("/headline/:string", function(req, res){
       res.render('polls', {failure: true, searchString: req.params.string})
     }
   })
+})
+
+// router.get('/headlines', function(req, res, next){
+//   res.render('headlines')
+// });
+
+router.get("/headlines", function(req, res){
+  unirest.get("https://api.nytimes.com/svc/topstories/v2/home.json?api-key=" + process.env.NYT_API_V2)
+    .end(function(response){
+      console.log('res.body', response.body.results);
+      res.render('headlines', {headlines: response.body.results})
+    });
 })
 
 router.get("/index/:string", function(req, res){
