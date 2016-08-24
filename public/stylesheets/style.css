@@ -7,6 +7,10 @@
   background-color: #ffffff;
 }
 
+.curve {
+  border-radius: 5px;
+}
+
 .bg-grey {
   background-color: #727373;
 }

@@ -120,7 +120,7 @@ function fireChart(graphData){
               }
           },
           series: [{
-              name: "Brands",
+              name: "Poll %",
               colorByPoint: true,
               data: graphData,
           }]

@@ -12,7 +12,6 @@ router.get('/polls', function(req, res, next){
 });
 
 router.get("/headline/:string", function(req, res){
-
   var searchString = req.params.string.split(" ").join("+")
   unirest.get('https://api.nytimes.com/svc/search/v2/articlesearch.json?q=' + searchString + '&api-key=' + process.env.NYTIMES_API_NEWS)
   .end(function (response){
@@ -26,10 +25,6 @@ router.get("/headline/:string", function(req, res){
   })
 })
 
-// router.get('/headlines', function(req, res, next){
-//   res.render('headlines')
-// });
-
 router.get("/headlines", function(req, res){
   unirest.get("https://api.nytimes.com/svc/topstories/v2/home.json?api-key=" + process.env.NYT_API_V2)
     .end(function(response){
@@ -38,7 +33,7 @@ router.get("/headlines", function(req, res){
     });
 })
 
-router.get("/index/:string", function(req, res){
+// router.get("/index/:string", function(req, res){
   // var toArray = req.params.string.split("&");
   // var long = toArray[0];
   // var lat = toArray[1];
@@ -61,5 +56,5 @@ router.get("/index/:string", function(req, res){
   //     res.render('index', {long: long, lat: lat, city: city, currentTemp: currentTemp, condition: condition, news: value.results})
   //   })
   // })
-})
+// })
 module.exports = router;
