@@ -1,12 +1,14 @@
 extends layout
 block content
   div(class="row")
-    div(class="col-md-6 col-md-offset-1")
-      form(id="titleSelectForm" action="/polls/new" method="get")
-        label(for="titleSelect" class="titleSelector")
-      select(name="titleSelect" id="titles" class="titleSelector btn btn-default dropdown-toggle")
-    div(class="titleSelector" id="submitString") 
-      h2(id="tally") Tally It
+    div(class="col-md-12")
+      div(class="col-md-4 col-md-offset-3")
+        form(id="titleSelectForm" action="/polls/new" method="get")
+          label(for="titleSelect" class="titleSelector")
+          select(name="titleSelect" id="titles" selected="Select Poll" class="titleSelector btn btn-default dropdown-toggle")
+      div(class="col-md-2")
+        div(class="titleSelector" id="submitString") 
+          h2(id="tally") Tally It
   div(class="row")
     div(class="col-md-12")
       if headlines
@@ -16,19 +18,20 @@ block content
         div(class="col-md-12")
           if headlines
             each headline in headlines
-              div(class="col-md-5 articles")
+              div(class="col-md-5 articles text-center")
                 h5
                   span
-                      a(href=headline.web_url)= headline.headline.main
+                      a(href=headline.web_url target="_blank")= headline.headline.main
+                h6= headline.pub_date
                 div(class="row")
-                  div(class="col-md-5 col-md-offset-1")
+                  div(class="col-md-5 col-md-offset-1 text-left")
                     h6= headline.snippet
                   div(class="col-md-5")
                     each url in headline.multimedia
                       if url.width == 190  
                         img(src="http://www.nytimes.com/" + url.url)
                 div(class="text-center")
-                  a(href=headline.web_url)= headline.source
+                  a(href=headline.web_url target="_blank")= headline.source
                 
               
   script(src="/javascripts/pollData.js")

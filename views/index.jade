@@ -1,4 +1,84 @@
 extends layout
 block content
-  script(src="javascripts/articles.js")
-  div(class="headlines")
+  div(class="row")
+    div(class="col-md-12 bg-green quotebox vertical-center")
+      div(class="col-md-offset-3 col-md-6")
+        h3(class="font-grey text-center") I think we risk becoming the best informed society that has ever died of ignorance.
+        div(class="row")
+          h4(class="font-grey text-right") -Ruben Blades 
+  div(class="row")
+    div(class="col-md-12 bg-grey splashbox vertical-center text-center")
+      div(class="col-md-offset-2 col-md-2")
+        div(class="row")
+          div(class="col-md-12")
+            img(src="/images/intellego_news_icon.png" width="70%")
+        div(class="row")
+          div(class="col-md-12")
+            h4(class="text-center font-lime") news
+        div(class="row")
+          div(class="col-md-12")
+            p(class="text-center font-white") Latest Headlines from around the world. 
+      div(class="col-md-offset-1 col-md-2")
+        div(class="row")
+          div(class="col-md-12")
+            img(src="/images/intellego_polls_icon.png" width="70%")
+        div(class="row")
+          div(class="col-md-12")
+            h4(class="text-center font-lime") polls 
+        div(class="row")
+          div(class="col-md-12")
+            p(class="text-center font-white") The newest Polls from around the country & poll archives going back to 2011.     
+      div(class="col-md-offset-1 col-md-2")
+        div(class="row")
+          div(class="col-md-12")
+            img(src="/images/intellego_weather_icon.png" width="70%")
+        div(class="row")
+          div(class="col-md-12")
+            h4(class="text-center font-lime") weather
+        div(class="row")
+          div(class="col-md-12")
+            p(class="text-center font-white") Get your latest up to the second weather.       
+  div(class="row footer bg-lime")
+    div(class="col-md-12")
+      div(class="row")
+        div(class="col-md-offset-3 col-md-6 text-center")
+          h4(class="font-grey") Learn about the Developer at 
+            a(href="http://nicgallardo.com/about" class-"font-grey") nicgallardo.com 
+  //- div(class="row")
+  //-   div(class="col-md-12")
+  //-     div(class="col-md-3 col-md-offset-1 outline")
+  //-       div(class="location text-center")
+  //-         H4 Click for Local Weather 
+  //-       if long !== undefined
+  //-         h5(class="text-center") Currently in 
+  //-           span= city 
+  //-           span  it is 
+  //-           span= currentTemp
+  //-           span  degrees.
+  //-         h5(class="text-center") Condtion: 
+  //-           span= condition.description
+  //-     if news !== undefined
+  //-       div(class="col-md-6 col-md-offset-1 outline")
+  //-         h3(class="text-center") Headlines
+  //-         i(class="text-center") from the 
+  //-           span
+  //-           a(href="http://www.nytimes.com/") New York Times
+  //-         each article in news
+  //-           div(class="front-articles row")
+  //-             div(class="col-md-offset-1 col-md-3")
+  //-               h5= article.section
+  //-             div(class="col-md-offset-1 col-md-6")
+  //-               a(href=article.url)= article.title
+  //-           div(class="row")
+  //-             div(class="col-md-offset-1 col-md-10")
+  //-               h6= article.abstract
+  //-           div(class="row")
+  //-             each url in article.multimedia
+  //-               if url.width == 75
+  //-                 //- img(src="http://www.nytimes.com/" + url.url)
+  //-                 li= url.url
+  //-                   //- each url in headline.multimedia
+  //-                   //-   if url.width == 190  
+  //-                   //-     img(src="http://www.nytimes.com/" + url.url)
+  //-       
+  script(src="/javascripts/location.js")

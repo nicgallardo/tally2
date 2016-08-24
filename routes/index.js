@@ -15,7 +15,7 @@ router.get("/headline/:string", function(req, res){
 
   var searchString = req.params.string.split(" ").join("+")
   console.log(searchString);
-  unirest.get('http://api.nytimes.com/svc/search/v2/articlesearch.json?q=' + searchString + '&api-key=' + process.env.NYTIMES_API)
+  unirest.get('https://api.nytimes.com/svc/search/v2/articlesearch.json?q=' + searchString + '&api-key=' + process.env.NYTIMES_API_NEWS)
   .end(function (response){
     var headlines = response.body.response.docs
     console.log(headlines);
@@ -23,4 +23,28 @@ router.get("/headline/:string", function(req, res){
   })
 })
 
+router.get("/index/:string", function(req, res){
+  var toArray = req.params.string.split("&");
+  var long = toArray[0];
+  var lat = toArray[1];
+
+  var getNews = new Promise(function(resolve, reject) {
+    unirest.get("http://api.nytimes.com/svc/topstories/v1/national.json?api-key=1d23652ee73d08f1106b56f567c0bb4b:4:73728841")
+      .end(function(response){
+        newsJSON = JSON.parse(response.body)
+        resolve(newsJSON);
+    });
+  });
+  getNews.then(function(value){
+    unirest.get("http://api.openweathermap.org/data/2.5/forecast?lat="+ lat+"&lon="+long+"&appid=2de143494c0b295cca9337e1e96b00e0")
+    .end(function (response){
+      var city = response.body.city.name;
+      var tempNow = ((response.body.list[0].main.temp *  9/5) - 459.67).toString().split('.');
+      var currentTemp = tempNow[0].toString()
+      var condition = response.body.list[0].weather[0];
+      console.log(value.results[1]);
+      res.render('index', {long: long, lat: lat, city: city, currentTemp: currentTemp, condition: condition, news: value.results})
+    })
+  })
+})
 module.exports = router;

@@ -1,7 +1,72 @@
+
+.bg-lime {
+  background-color: #ccd42a;
+}
+
+.bg-white {
+  background-color: #ffffff;
+}
+
+.bg-grey {
+  background-color: #727373;
+}
+
+.bg-green {
+  background-color: #adae36;
+}
+
+.font-lime {
+  color: #ccd42a;
+}
+
+.font-white {
+  color: #ffffff;
+}
+
+.font-grey {
+  color: #727373;
+}
+
+.font-green {
+  color: #adae36;
+}
+
+.headbar {
+  height: 60px;
+}
+.headbar-linkspace{
+  height: 60px;
+}
+.quotebox {
+  height: 200px;
+}
+
+.splashbox {
+  height:400px;
+}
+
+.footer {
+  height: 50px;
+}
+.vertical-center {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+  display: flex;
+  align-items: center;
+}
 .articles {
   padding: 10px;
   margin-left: 6%;
   margin-top: 20px;
   background-color: #F7F7F7;
   height: 220px;
+}
+
+.front-articles {
+  padding: 10px;
+  margin: 30px;
+  height: 20px
+}
+.outline {
+  outline: 1px solid black;
 }
