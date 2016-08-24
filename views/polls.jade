@@ -1,5 +1,8 @@
 extends layout
 block content
+  script(src="/javascripts/pollData.js")
+  script(src="https://code.highcharts.com/highcharts.js")
+  script(src="https://code.highcharts.com/modules/exporting.js")
   div(class="row")
     div(class="col-md-12")
       div(class="col-md-4 col-md-offset-3")
@@ -32,8 +35,3 @@ block content
                         img(src="http://www.nytimes.com/" + url.url)
                 div(class="text-center")
                   a(href=headline.web_url target="_blank")= headline.source
-                
-              
-  script(src="/javascripts/pollData.js")
-  script(src="https://code.highcharts.com/highcharts.js")
-  script(src="https://code.highcharts.com/modules/exporting.js")

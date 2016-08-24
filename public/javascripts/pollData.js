@@ -48,14 +48,18 @@ $(window).load(function () {
   for(var i = 0; i <allTitles.length; i++){
     $("#titles").append("<option>"+ allTitles[i] + "</option>");
   }
-  $( "#submitString" ).click(function() {
+  $( "#titles" ).change(function() {
     string = $("#titles").val();
     window.location.href = "/headline/"+ string;
   });
+
   if(window.location.pathname.length > 30){
+    console.log('RAN ')
     var pathSearchString = window.location.pathname.split('/').pop().split("%20").join(' ')
     createGraphData(latest_data, pathSearchString);
   }
+
+
 
 
 });
@@ -71,19 +75,21 @@ function createGraphData(data, searchString){
       currentPollTitle = data[i].title
     }
   }
+
   for(var i = 0; i < currentPolls[0].length; i++){
     finalOutput = {};
     finalOutput["name"] = currentPolls[0][i].choice;
-    finalOutput["y"] = currentPolls[0][i].value;
+    finalOutput["y"] = Number(currentPolls[0][i].value);
     output.push(finalOutput);
     // console.log("output", output);
-    fireChart(output)
   }
+  fireChart(output)
   currentPolls = [];
   output = [];
 };
 
 function fireChart(graphData){
+  console.log("graphData",graphData);
   $(function () {
       $('#container').highcharts({
           chart: {
