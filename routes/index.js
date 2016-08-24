@@ -28,7 +28,6 @@ router.get("/headline/:string", function(req, res){
 router.get("/headlines", function(req, res){
   unirest.get("https://api.nytimes.com/svc/topstories/v2/home.json?api-key=" + process.env.NYT_API_V2)
     .end(function(response){
-      console.log('res.body', response.body.results);
       res.render('headlines', {headlines: response.body.results})
     });
 })
