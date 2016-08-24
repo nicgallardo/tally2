@@ -83,11 +83,13 @@ function createGraphData(data, searchString){
     output.push(finalOutput);
     // console.log("output", output);
   }
-  fireChart(output)
+  output.length > 0 ? fireChart(output) : triggerError();
   currentPolls = [];
   output = [];
 };
-
+function triggerError(){
+  $('#container').append('<div class="alert alert-danger"><strong>Error!</strong> There was an error loading this poll. Please select another poll.</div>')
+};
 function fireChart(graphData){
   console.log("graphData",graphData);
   $(function () {
