@@ -1,22 +1,38 @@
 doctype html
 html
   head
-    link(href='https://fonts.googleapis.com/css?family=Lobster|Cabin' rel='stylesheet' type='text/css')
-    link(rel='stylesheet', href='/stylesheets/style.css')
-    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous")
-    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous")
+  link(href='https://fonts.googleapis.com/css?family=Lobster|Cabin' rel='stylesheet' type='text/css')
+  link(rel='stylesheet', href='/stylesheets/style.css')
+  link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous")
+  link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous")
+  script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js")
   body
-    script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js")
-    div(class="row headbar text-center font-grey")
-      div(class="col-md-12 ")
-      div(class="col-md-3 bg-white")
-        img(src="/images/intellego_logo_sm.png" width="70%")
-      div(class="col-md-2 vertical-center headbar bg-lime")
-        h4 news
-      div(class="col-md-2 vertical-center headbar bg-lime")
-        h4 polls
-      div(class="col-md-2 vertical-center headbar bg-lime")
-        h4 weather
-      div(class="col-md-3 text-left vertical-center headbar bg-lime")
-        h4 smarket Exchange
-    block content
+  nav.navbar.navbar-default
+    .container-fluid
+      .navbar-header
+        button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1', aria-expanded='false')
+          span.sr-only Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        a.navbar-brand(href='/')
+          img(src="/images/intellego_logo_sm.png" width="25%")
+      #bs-example-navbar-collapse-1.collapse.navbar-collapse
+        ul.nav.navbar-nav
+          li
+            a(href='/polls') Polls 
+
+    //- div(class="row headbar text-center font-grey")
+    //-   div(class="col-md-12 ")
+    //-   div(class="col-md-3 bg-white")
+    //-     
+    //-   div(class="col-md-2 vertical-center headbar bg-lime")
+    //-     h4 news
+    //-   div(class="col-md-2 vertical-center headbar bg-lime")
+    //-     h4 polls
+    //-   div(class="col-md-2 vertical-center headbar bg-lime")
+    //-     h4 weather
+    //-   div(class="col-md-3 text-left vertical-center headbar bg-lime")
+    //-     h4 smarket Exchange
+  block content
+      //- 
