@@ -10,6 +10,10 @@
 .curve {
   border-radius: 5px;
 }
+.home-pad {
+  padding-right: 50px;
+  padding-left: 50px;
+}
 
 .bg-grey {
   background-color: #727373;
